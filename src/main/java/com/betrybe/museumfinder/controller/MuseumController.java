@@ -59,7 +59,9 @@ public class MuseumController {
    */
   @GetMapping("/closest")
   public ResponseEntity<MuseumDto> getClosestMuseum(
-      @RequestParam double lat, double lng, Double maxDistance
+      @RequestParam Double lat,
+      @RequestParam Double lng,
+      @RequestParam("max_dist_km") Double maxDistance
   ) {
 
     Coordinate coordinate = new Coordinate(lat, lng);
