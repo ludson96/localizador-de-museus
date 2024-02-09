@@ -7,10 +7,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+/**
+ * Classe advice usado para gerenciar todas as exceções de forma personalizada.
+ */
 @ControllerAdvice
 public class GeneralControllerAdvice {
   @ExceptionHandler(InvalidCoordinateException.class)
-  public ResponseEntity<String> handleInvalidCoordinateException(InvalidCoordinateException exception) {
+  public ResponseEntity<String> handleInvalidCoordinateException(
+      InvalidCoordinateException exception
+  ) {
     return ResponseEntity.badRequest()
         .body("Coordenada inválida!");
   }
