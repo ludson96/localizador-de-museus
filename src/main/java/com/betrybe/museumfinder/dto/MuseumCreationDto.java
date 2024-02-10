@@ -3,7 +3,7 @@ package com.betrybe.museumfinder.dto;
 import com.betrybe.museumfinder.model.Coordinate;
 
 /**
- * Classe record usado como dto de request da pessoa usuária
+ * Classe do tipo record usado como dto de request da pessoa usuária.
  *
  * @param name String
  * @param description String
@@ -21,4 +21,4 @@ public record MuseumCreationDto(
     String subject,
     String url,
     Coordinate coordinate
-    ) {}
+) {}

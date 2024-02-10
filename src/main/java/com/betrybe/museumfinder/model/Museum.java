@@ -1,5 +1,8 @@
 package com.betrybe.museumfinder.model;
 
+/**
+ * Entidade model usado como classe para bd.
+ */
 public class Museum {
   private Long id;
   private String name;

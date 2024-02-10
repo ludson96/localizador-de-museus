@@ -74,12 +74,18 @@ public class MuseumController {
     return ResponseEntity.ok().body(museumDto);
   }
 
+  /**
+   * Método que retorna museu de acordo com o id.
+   *
+   * @param id id do museu desejado.
+   * @return retorna um museu sem os dados sensíveis.
+   */
   @GetMapping("{id}")
   public ResponseEntity<MuseumDto> getMuseum(@PathVariable Long id) {
-      Museum museum = museumServiceInterface.getMuseum(id);
+    Museum museum = museumServiceInterface.getMuseum(id);
 
-      MuseumDto museumDto = ModelDtoConverter.modelToDto(museum);
+    MuseumDto museumDto = ModelDtoConverter.modelToDto(museum);
 
-      return ResponseEntity.ok().body(museumDto);
+    return ResponseEntity.ok().body(museumDto);
   }
 }
