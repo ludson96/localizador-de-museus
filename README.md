@@ -21,7 +21,7 @@ de `Injeção de dependencia`, `API REST com Spring`, `Spring Boot`, `Exceções
 
 ## O que foi desenvolvido
 
-Neste projeto você implementei uma API cuja principal funcionalidade é facilitar a busca por museus baseada em sua localização. Os dados foram retirados [desta](http://dados.cultura.gov.br/dataset/series-historicas-cadastro-nacional-de-museus) série histórica.
+Neste projeto implementei uma API cuja principal funcionalidade é facilitar a busca por museus baseada em sua localização. Os dados foram retirados [desta](http://dados.cultura.gov.br/dataset/series-historicas-cadastro-nacional-de-museus) série histórica.
 
 ## Habilidades trabalhadas
 
