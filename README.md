@@ -12,11 +12,11 @@
 
 ## 🚀 Live Demo (Swagger UI)
 
-Explore e execute todas as rotas interativamente diretamente pelo navegador:
+Explore e execute todas as rotas interativamente diretamente pelo navegador (ao acessar a raiz `/`, você será redirecionado automaticamente para o Swagger):
 
-🔗 **[Acessar Swagger UI no Render](https://SEU-APP-AQUI.onrender.com/swagger-ui.html)** *(substitua pela sua URL após o deploy)*
+🔗 **[Acessar Swagger UI no Render](https://SEU-APP-AQUI.onrender.com)** *(substitua pela sua URL após o deploy)*
 
-Ou localmente em: `http://localhost:8080/swagger-ui.html`
+Ou localmente em: `http://localhost:8080/`
 
 ---
 
