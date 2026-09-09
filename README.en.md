@@ -165,18 +165,19 @@ GET /collections/count/historia,artes
 
 ## 🛠️ Technologies and Tools
 
-| Layer / Purpose | Technology | Version |
+| Layer / Purpose | Technology | Description |
 | :--- | :--- | :--- |
-| **Language** | Java (OpenJDK) | 17 LTS |
-| **Framework** | Spring Boot | 3.0.5 |
-| **Web Layer** | Spring MVC | 3.0.5 |
-| **Observability** | Spring Boot Actuator | 3.0.5 |
-| **API Documentation** | SpringDoc OpenAPI / Swagger UI | 2.1.0 |
-| **Testing & Mocking** | JUnit 5 / Mockito / MockMvc | 5.x |
-| **Code Coverage** | JaCoCo | 0.8.10 |
-| **Containerization** | Docker (Multi-stage Build) | Engine 24+ |
-| **Base Runtime Container** | Eclipse Temurin JRE Jammy | 17 |
-| **Cloud Hosting (PaaS)** | Render | Cloud |
+| **Primary Language** | **Java 17 LTS** | Records, Pattern Matching, Stream API and modern JVM enhancements |
+| **Web Framework** | **Spring Boot 3.0.5** | Dependency injection, REST architecture, and simplified configuration |
+| **HTTP / REST Layer** | **Spring MVC** | Declarative endpoint mapping, decoupled controllers, and DTOs |
+| **Geospatial Computation** | **Haversine Geodetic Algorithm** | Spherical distance calculations and deterministic proximity sorting |
+| **Observability & Metrics** | **Spring Boot Actuator** | Health check monitoring endpoints (`/health`, `/info`) |
+| **Interactive Documentation** | **Swagger UI / SpringDoc OpenAPI 2.1.0** | Live OpenAPI 3 specification and integrated browser testing console |
+| **Automated Testing** | **JUnit 5 & Mockito** | Unit and integration tests covering controllers and services with MockMvc |
+| **Code Coverage** | **JaCoCo 0.8.10** | Automated code coverage reports and test quality metrics |
+| **Containerization** | **Docker (Multi-stage Build)** | Lightweight final container image on Eclipse Temurin JRE 17 Jammy |
+| **Build Management** | **Apache Maven** | Build lifecycle management, testing automation, and dependency resolution |
+| **Deployment & Hosting** | **Render Cloud (PaaS)** | Continuous Docker container hosting with dynamic port resolution |
 
 ---
 

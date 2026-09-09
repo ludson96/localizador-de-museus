@@ -149,18 +149,19 @@ GET /collections/count/historia,artes
 
 ## 🛠️ Tecnologias e Ferramentas Utilizadas
 
-| Camada / Finalidade | Tecnologia | Versão |
+| Camada / Finalidade | Tecnologia | Descrição |
 | :--- | :--- | :--- |
-| **Linguagem** | Java (OpenJDK) | 17 LTS |
-| **Framework Base** | Spring Boot | 3.0.5 |
-| **Camada Web** | Spring MVC | 3.0.5 |
-| **Observabilidade** | Spring Boot Actuator | 3.0.5 |
-| **Documentação Interativa** | SpringDoc OpenAPI / Swagger UI | 2.1.0 |
-| **Testes Unitários e Mocking** | JUnit 5 / Mockito / MockMvc | 5.x |
-| **Cobertura de Código** | JaCoCo | 0.8.10 |
-| **Containerização** | Docker (Multi-stage Build) | Engine 24+ |
-| **Runtime Base do Container** | Eclipse Temurin JRE Jammy | 17 |
-| **Plataforma de Nuvem (PaaS)** | Render | Cloud |
+| **Linguagem Principal** | **Java 17 LTS** | Uso de Records, Pattern Matching, Stream API e recursos modernos da JVM |
+| **Framework Web** | **Spring Boot 3.0.5** | Injeção de dependências, arquitetura REST e configuração simplificada |
+| **Camada HTTP / REST** | **Spring MVC** | Roteamento declarativo de endpoints, controllers desacoplados e DTOs |
+| **Cálculo Geoespacial** | **Algoritmo Geodésico Haversine** | Cálculo de distâncias esféricas e ordenação determinística por proximidade |
+| **Observabilidade e Métricas** | **Spring Boot Actuator** | Endpoints de monitoramento de integridade e saúde da aplicação (`/health`) |
+| **Documentação Interativa** | **Swagger UI / SpringDoc OpenAPI 2.1.0** | Especificação OpenAPI 3 viva e console de testes integrado no navegador |
+| **Testes Automatizados** | **JUnit 5 & Mockito** | Testes de unidade e integração cobrindo controladores e serviços com MockMvc |
+| **Cobertura de Código** | **JaCoCo 0.8.10** | Análise e métricas de cobertura de código automatizada |
+| **Containerização** | **Docker (Multi-stage Build)** | Imagem final leve sobre runtime Eclipse Temurin JRE 17 Jammy |
+| **Gerenciador de Build** | **Apache Maven** | Gestão de ciclo de vida, compilação e dependências do ecossistema Java |
+| **Deploy e Hospedagem** | **Render Cloud (PaaS)** | Hospedagem contínua via container Docker com suporte a porta dinâmica |
 
 ## 🏛️ Arquitetura da Solução
 
