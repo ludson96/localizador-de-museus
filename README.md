@@ -1,194 +1,164 @@
-# Repositório do projeto `Localizador de Museus` 🏛️️
+# Museum Finder API 🏛️
+
+[![Java](https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.0.5-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)](https://spring.io/projects/spring-boot)
+[![Swagger / OpenAPI](https://img.shields.io/badge/Swagger-OpenAPI%203-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](http://localhost:8080/swagger-ui.html)
+[![Docker](https://img.shields.io/badge/Docker-Container-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![Render](https://img.shields.io/badge/Render-Deployment-46E3B7?style=for-the-badge&logo=render&logoColor=black)](https://render.com/)
+
+> API REST desenvolvida em **Java 17** e **Spring Boot 3** para busca, geolocalização e análise estatística de museus brasileiros com base nos dados abertos do **Cadastro Nacional de Museus (IBRAM/Ministério da Cultura)**.
+
+---
+
+## 🚀 Live Demo (Swagger UI)
+
+Explore e execute todas as rotas interativamente diretamente pelo navegador:
+
+🔗 **[Acessar Swagger UI no Render](https://SEU-APP-AQUI.onrender.com/swagger-ui.html)** *(substitua pela sua URL após o deploy)*
+
+Ou localmente em: `http://localhost:8080/swagger-ui.html`
+
+---
+
+## 📌 Funcionalidades Principais
+
+- 📍 **Busca Geoespacial de Proximidade:** Localiza o museu mais próximo com base em coordenadas geográficas de latitude e longitude do usuário, respeitando um raio máximo em quilômetros (`max_dist_km`).
+- 🏛️ **Gestão de Museus:** Cadastro de novos museus e consulta detalhada por identificador único (ID).
+- 📊 **Análise de Tipos de Acervo:** Consulta e contagem agregada de instituições por múltiplos tipos de acervo cultural (ex: história, artes, arqueologia, etc.).
+- 🛡️ **Tratamento Centralizado de Exceções:** Retornos semânticos com `@ControllerAdvice` para coordenadas inválidas e recursos não encontrados.
+- 🧪 **Cobertura de Testes:** Testes unitários e de integração de controllers e services utilizando JUnit 5 e Mockito.
+- 📑 **Documentação Interativa:** Especificação OpenAPI 3 gerada automaticamente via SpringDoc.
+
+---
+
+## 🛠️ Tecnologias e Arquitetura
+
+- **Linguagem:** Java 17
+- **Framework:** Spring Boot 3.0.5
+- **Módulos Spring:** Spring Web (MVC), Spring Boot Actuator
+- **Documentação:** Springdoc OpenAPI (Swagger UI)
+- **Testes:** JUnit 5, Mockito, MockMvc, JaCoCo
+- **Containerização:** Docker (Multi-stage build com Eclipse Temurin JRE 17)
+- **Arquitetura:** Camadas bem definidas (*Controller*, *Service*, *Model*, *DTO* e *ControllerAdvice*) seguindo princípios de responsabilidade única e desacoplamento.
+
+---
+
+## 🗺️ Especificação dos Endpoints (API REST)
+
+### 1. Museus
+
+| Método | Endpoint | Descrição |
+| :--- | :--- | :--- |
+| `POST` | `/museums` | Cadastra um novo museu no sistema |
+| `GET` | `/museums/closest?lat={lat}&lng={lng}&max_dist_km={dist}` | Retorna o museu mais próximo das coordenadas dentro do raio máximo |
+| `GET` | `/museums/{id}` | Busca um museu pelo ID |
+
+#### Exemplo de criação (`POST /museums`):
+```json
+{
+  "name": "Museu Imperial",
+  "description": "Museu histórico localizado em Petrópolis, antiga residência de verão de D. Pedro II.",
+  "address": "Rua da Imperatriz, 220 - Centro, Petrópolis - RJ",
+  "collectionType": "História, Artes Visuais",
+  "subject": "Império do Brasil",
+  "url": "https://museuimperial.museus.gov.br",
+  "coordinate": {
+    "latitude": -22.5054,
+    "longitude": -43.1764
+  }
+}
+```
 
-Repositório possuí projeto desenvolvido abordando conceitos
-de `Injeção de dependencia`, `API REST com Spring`, `Spring Boot`, `Exceções`, `Testes com JUnit5` e `Docker`.
+#### Exemplo de resposta da busca mais próxima (`GET /museums/closest`):
+```json
+{
+  "name": "Museu Imperial",
+  "description": "Museu histórico localizado em Petrópolis...",
+  "address": "Rua da Imperatriz, 220 - Centro, Petrópolis - RJ",
+  "collectionType": "História, Artes Visuais",
+  "subject": "Império do Brasil",
+  "url": "https://museuimperial.museus.gov.br",
+  "coordinate": {
+    "latitude": -22.5054,
+    "longitude": -43.1764
+  }
+}
+```
 
-## Informações de aprendizados
+---
 
-- Primeiro projeto usando `Spring e seus complementos`;
-- Primeiro projeto em `Java` usando `API REST`;
-- Primeiro projeto em `Java` usando `Docker`;
-- Primeiro projeto com `testes`.
+### 2. Acervos Culturais
 
-## Linguagens e ferramentas usadas
+| Método | Endpoint | Descrição |
+| :--- | :--- | :--- |
+| `GET` | `/collections/count/{typesList}` | Conta quantos museus possuem os tipos de acervo informados (separados por vírgula) |
 
-[![Git][Git-logo]][Git-url]
-[![Java][Java-logo]][Java-url]
-[![Apache Maven][Apache Maven-logo]][Apache Maven-url]
-[![Docker][Docker-logo]][Docker-url]
-[![Spring][Spring-logo]][Spring-url]
-[![Spring Boot][Spring boot-logo]][Spring boot-url]
+#### Exemplo (`GET /collections/count/historia,artes`):
+```json
+{
+  "collectionTypes": [
+    "historia",
+    "artes"
+  ],
+  "count": 492
+}
+```
 
-## O que foi desenvolvido
+---
 
-Neste projeto implementei uma API cuja principal funcionalidade é facilitar a busca por museus baseada em sua localização. Os dados foram retirados [desta](http://dados.cultura.gov.br/dataset/series-historicas-cadastro-nacional-de-museus) série histórica.
+## 💻 Como Executar Localmente
 
-## Habilidades trabalhadas
+### Pré-requisitos
+- [Git](https://git-scm.com/)
+- [Java 17+](https://www.oracle.com/java/technologies/downloads/#java17) e [Maven](https://maven.apache.org/) **OU** [Docker](https://www.docker.com/)
 
-- Criar classes de controle e suas rotas
-- Criar classes de serviço
-- Utilizar injeção de dependências
-- Trabalhar com exceções customizadas
-- Tratar exceções da API através de gerenciadores de erros
-- Implementar testes unitários para cobertura de código
-- Criar uma configuração Docker para sua aplicação
+### 1. Clonar o Repositório
+```bash
+git clone https://github.com/ludson96/localizador-de-museus.git
+cd localizador-de-museus
+```
 
-## Instruções para instalar e rodar
+### Opção A: Executar com Docker (Recomendado)
+```bash
+# Construir a imagem Docker multi-stage
+docker build -t museum-finder .
 
-<details>
+# Rodar o container na porta 8080
+docker run -p 8080:8080 --name museum-finder-app museum-finder
+```
 
-1. Clone o repositório (recomendado usar em SSH) e entre na pasta:
+Acesse a documentação Swagger em: `http://localhost:8080/swagger-ui.html`
 
-    ```bash
-    git clone git@github.com:ludson96/localizador-de-museus.git
-    cd sistema-votacao
-    ```
+---
 
-1. Instale as dependências:
+### Opção B: Executar com Maven
+```bash
+# Compilar e empacotar
+mvn clean package
 
-    ```bash
-    mvn install
-    ```
-   
-1. Caso não tenha java ou maven instalados, basta executar o `Docker` com o comando abaixo:
+# Executar o JAR
+java -jar target/museum-finder-1.0-SNAPSHOT.jar
+```
 
-   ```bash
-   #Comando para gerar imagem.
-   docker build . -t multi-stage-image
-   
-   #Comando para executar o container usando a imagem gerada anteriormente. Irá executar o servidor Spring automaticamente e podendo ignorar o passo abaixo.
-   docker run -p 8080:8080 --name multi-stage-container multi-stage-image
-   ```
-1. Para executar o servidor spring:
+---
 
-    ```bash
-   mvn clean package
-   java -jar target/museum-finder-1.0-SNAPSHOT.jar
-    ```
+## ☁️ Como Fazer o Deploy no Render
 
-</details>
+1. Crie uma conta no [Render.com](https://render.com/).
+2. Conecte sua conta do GitHub e clique em **New +** ➔ **Web Service**.
+3. Selecione o repositório `localizador-de-museus`.
+4. Em **Language / Environment**, escolha **Docker**.
+5. O Render detectará automaticamente o `Dockerfile` com multi-stage build.
+6. A aplicação já está configurada para ler dinamicamente a variável de ambiente `PORT` provida pelo Render.
+7. Clique em **Create Web Service**.
+8. Assim que a build concluir, acesse `https://<seu-subdominio>.onrender.com/swagger-ui.html`!
 
-[//]: # (## Detalhamento de execução)
+---
 
-[//]: # ()
-[//]: # (<details>)
+## 📄 Licença
 
-[//]: # ()
-[//]: # (  <summary><strong>Museus</strong></summary>)
+Distribuído sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
 
-[//]: # ()
-[//]: # (### Endpoints)
+---
 
-[//]: # ()
-[//]: # (Abaixo você pode conferir um detalhamento dos endpoints utilizados no projeto. Para realizar as requisições HTTP e consultar o comportamento de cada endpoint, você pode utilizar o [Insomnia]&#40;https://insomnia.rest/download&#41;.)
-
-[//]: # ()
-[//]: # (### POST /museums)
-
-[//]: # ()
-[//]: # (- Retorna todos os carros registrados no banco de dados.)
-
-[//]: # (- URL: `http://localhost:PORT/cars`)
-
-[//]: # ()
-[//]: # (### POST /cars)
-
-[//]: # ()
-[//]: # (- Adiciona um novo carro ao banco de dados.)
-
-[//]: # (- URL: `http://localhost:PORT/cars`)
-
-[//]: # (- O corpo da requisição deve seguir o formato abaixo:)
-
-[//]: # ()
-[//]: # (```)
-
-[//]: # ({)
-
-[//]: # (  "model": "Marea",)
-
-[//]: # (  "year": 2002,)
-
-[//]: # (  "color": "Black",)
-
-[//]: # (  "status": true, // Não é obrigatório. Se não for inserido, o valor do status será 'false')
-
-[//]: # (  "buyValue": 15.990,)
-
-[//]: # (  "doorsQty": 4,)
-
-[//]: # (  "seatsQty": 5)
-
-[//]: # (})
-
-[//]: # (```)
-
-[//]: # ()
-[//]: # (### GET /cars/:id)
-
-[//]: # ()
-[//]: # (- Retorna o carro cujo id foi passado na URL.)
-
-[//]: # (- Exemplo de URL: `http://localhost:PORT/cars/634852326b35b59438fbea2f`)
-
-[//]: # ()
-[//]: # (### PUT /cars/:id)
-
-[//]: # ()
-[//]: # (- Atualiza o carro cujo id foi passado na URL.)
-
-[//]: # (- Exemplo de URL: `http://localhost:PORT/cars/634852326b35b59438fbea2f`)
-
-[//]: # (- O corpo da requisição deve seguir o formato abaixo:)
-
-[//]: # ()
-[//]: # (```)
-
-[//]: # ({)
-
-[//]: # (  "model": "Marea",)
-
-[//]: # (  "year": 1992,)
-
-[//]: # (  "color": "Red",)
-
-[//]: # (  "status": true, // Não é obrigatório. Se não for inserido, o valor do status será 'false')
-
-[//]: # (  "buyValue": 12.000,)
-
-[//]: # (  "doorsQty": 2,)
-
-[//]: # (  "seatsQty": 5)
-
-[//]: # (})
-
-[//]: # (```)
-
-[//]: # ()
-[//]: # (### DELETE /cars/:id)
-
-[//]: # ()
-[//]: # (- Remove do banco de dados o carro cujo id foi passado na URL.)
-
-[//]: # (- Exemplo de URL: `http://localhost:PORT/cars/634852326b35b59438fbea2f`)
-
-[//]: # ()
-[//]: # (</details>)
-
-[Git-logo]: https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white
-[Git-url]: https://git-scm.com
-
-[Java-logo]: https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white
-[Java-url]: https://www.java.com/pt-BR/
-
-[Apache Maven-logo]: https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white
-[Apache Maven-url]: https://maven.apache.org/
-
-[Docker-logo]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
-[Docker-url]: https://www.docker.com
-
-[Spring-logo]: https://img.shields.io/badge/Spring-6DB33F.svg?style=for-the-badge&logo=Spring&logoColor=white
-[Spring-url]: https://spring.io/
-
-[Spring boot-logo]:https://img.shields.io/badge/Spring%20Boot-6DB33F.svg?style=for-the-badge&logo=Spring-Boot&logoColor=white
-[Spring boot-url]: https://spring.io/projects/spring-boot
+Desenvolvido por [Ludson](https://github.com/ludson96) 🚀
