@@ -1,4 +1,4 @@
-﻿package com.ludson.museumfinder.model;
+package com.ludson.museumfinder.model;
 
 /**
  * Entidade model usado como classe para bd.

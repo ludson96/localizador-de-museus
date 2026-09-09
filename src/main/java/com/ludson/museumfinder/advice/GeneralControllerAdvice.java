@@ -1,4 +1,4 @@
-﻿package com.ludson.museumfinder.advice;
+package com.ludson.museumfinder.advice;
 
 import com.ludson.museumfinder.exception.InvalidCoordinateException;
 import com.ludson.museumfinder.exception.MuseumNotFoundException;

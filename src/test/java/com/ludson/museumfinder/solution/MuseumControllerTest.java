@@ -1,4 +1,4 @@
-﻿package com.ludson.museumfinder.solution;
+package com.ludson.museumfinder.solution;
 
 import static org.mockito.ArgumentMatchers.any;
 

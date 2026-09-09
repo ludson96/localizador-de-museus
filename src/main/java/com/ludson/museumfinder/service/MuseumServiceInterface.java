@@ -1,4 +1,4 @@
-﻿package com.ludson.museumfinder.service;
+package com.ludson.museumfinder.service;
 
 import com.ludson.museumfinder.model.Coordinate;
 import com.ludson.museumfinder.model.Museum;

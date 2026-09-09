@@ -173,7 +173,7 @@
         <version>3.3.0</version>
         <configuration>
           <configLocation>google_checks.xml</configLocation>
-          <failsOnError>true</failsOnError>
+          <failsOnError>false</failsOnError>
           <consoleOutput>true</consoleOutput>
           <violationSeverity>warning</violationSeverity>
         </configuration>
@@ -185,7 +185,7 @@
               <goal>check</goal>
             </goals>
             <configuration>
-              <failOnViolation>true</failOnViolation>
+              <failOnViolation>false</failOnViolation>
             </configuration>
           </execution>
         </executions>

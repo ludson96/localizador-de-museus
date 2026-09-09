@@ -1,4 +1,4 @@
-﻿package com.ludson.museumfinder.model;
+package com.ludson.museumfinder.model;
 
 /**
  * Record representing a coordinate.

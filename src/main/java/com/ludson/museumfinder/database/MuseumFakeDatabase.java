@@ -1,4 +1,4 @@
-﻿package com.ludson.museumfinder.database;
+package com.ludson.museumfinder.database;
 
 import static com.ludson.museumfinder.util.CoordinateUtil.coordinateDistance;
 

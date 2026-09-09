@@ -1,4 +1,4 @@
-﻿package com.ludson.museumfinder.dto;
+package com.ludson.museumfinder.dto;
 
 import com.ludson.museumfinder.model.Coordinate;
 

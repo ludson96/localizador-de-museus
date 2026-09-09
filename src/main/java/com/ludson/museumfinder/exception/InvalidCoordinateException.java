@@ -1,4 +1,4 @@
-﻿package com.ludson.museumfinder.exception;
+package com.ludson.museumfinder.exception;
 
 /**
  * Classe de exceção lançada quando uma coordenada for invalida.

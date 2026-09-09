@@ -1,4 +1,4 @@
-﻿package com.ludson.museumfinder.service;
+package com.ludson.museumfinder.service;
 
 import com.ludson.museumfinder.database.MuseumFakeDatabase;
 import com.ludson.museumfinder.dto.CollectionTypeCount;
